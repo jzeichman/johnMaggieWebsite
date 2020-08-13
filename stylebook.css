@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+body {
+  background-color: rgb(243, 241, 241);
+}
+nav {
+  text-align: center;
+  display: block;
+  margin: 5px;
+}
+.columnOfBooks {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(252, 252, 246);
+}
+
+.book {
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain, cover;
+  width: 95%;
+  height: 100vh;
+  background-color: rgb(243, 243, 243);
+  border: 1px solid rgb(83, 83, 83);
+  background-color: rgb(177, 177, 177);
+  width: 300px;
+  height: 450px;
+  display: flex;
+  align-items: flex-end;
+  margin: 50px;
+}
+.bookBtns {
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 35px;
+  flex-basis: 50%;
+  height: 55px;
+  border-top: 1px solid rgb(83, 83, 83);
+  background-color: rgb(228, 228, 228);
+  color: rgb(173, 173, 173);
+}
+.firstBook {
+  background-image: url("bookWebIMG/demon/IMG_1129.jpg");
+}
+.secondBook {
+  background-image: url("bookWebIMG/pinched/IMG_1059.jpg");
+}

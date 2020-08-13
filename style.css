@@ -1,0 +1,50 @@
+* {
+  margin: 0;
+}
+body {
+  box-sizing: border-box;
+  position: relative;
+  background-color: whitesmoke;
+  font-family: Roboto, Arial;
+}
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+li {
+  margin: 20px;
+}
+.sidebar {
+  position: absolute;
+  top: 0;
+  background-color: aqua;
+  width: 250px;
+  height: 100vh;
+}
+
+/*   START GABRYSIAK WORK SECTION    */
+
+.workHeader {
+  text-align: center;
+  margin: 20px;
+}
+.workWrapper {
+  display: flex;
+  justify-content: center;
+}
+.workContainer {
+  height: 100vh;
+  max-width: 414px;
+}
+.workPic {
+  padding-top: 55px;
+  width: 100%;
+}
+footer {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+.imageContainer {
+  display: flex;
+}

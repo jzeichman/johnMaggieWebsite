@@ -13,14 +13,31 @@ body {
   align-items: center;
   height: 50px;
   border-bottom: 1px solid grey;
-  align-content: space-around;
 }
 .hamburgerIcon {
-  display: flex;
-  flex-basis: 15%;
-
-  justify-content: center;
+  position: relative;
+  margin-left: 25px;
 }
+.hamburgerIcon,
+.hamburgerIcon::before,
+.hamburgerIcon::after {
+  width: 20px;
+  height: 3px;
+  background-color: black;
+}
+.hamburgerIcon::before,
+.hamburgerIcon::after {
+  position: absolute;
+  content: "";
+  left: 0px;
+}
+.hamburgerIcon::after {
+  top: 6px;
+}
+.hamburgerIcon::before {
+  top: -6px;
+}
+
 .title {
   display: flex;
   justify-content: center;
@@ -30,22 +47,25 @@ body {
   flex-grow: 2;
 }
 .icon {
-  flex-basis: 15%;
-  display: flex;
-  justify-content: center;
+  margin-right: 25px;
+}
+.closeSideBar {
+  font-weight: 600;
+  margin-left: 30px;
+  margin-top: 18px;
 }
 ul {
   list-style-type: none;
   padding-left: 0;
 }
 li {
-  margin: 20px;
+  margin: 40px;
 }
 .sidebar {
   position: absolute;
   top: 0;
   left: -250px;
-  background-color: aqua;
+  background-color: rgb(184, 178, 185);
   width: 250px;
   height: 100vh;
 }
@@ -75,4 +95,53 @@ footer {
 }
 .imageContainer {
   display: flex;
+}
+
+/* start book section */
+
+.columnOfBooks {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(252, 252, 246);
+}
+
+.book {
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: contain, cover;
+  width: 95%;
+  height: 100vh;
+  background-color: rgb(243, 243, 243);
+  border: 1px solid rgb(83, 83, 83);
+  background-color: rgb(177, 177, 177);
+  width: 300px;
+  height: 450px;
+  display: flex;
+  align-items: flex-end;
+  margin: 50px;
+}
+.bookBtns {
+  cursor: pointer;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  font-size: 35px;
+  flex-basis: 50%;
+  height: 55px;
+  border-top: 1px solid rgb(83, 83, 83);
+  background-color: rgb(228, 228, 228);
+  color: rgb(173, 173, 173);
+}
+.firstBook {
+  background-image: url("bookWebIMG/demon/IMG_1129.jpg");
+}
+.secondBook {
+  background-image: url("bookWebIMG/pinched/IMG_1059.jpg");
+}
+.thirdBook {
+  background-image: url("bookWebIMG/death/IMG_988.jpg");
 }

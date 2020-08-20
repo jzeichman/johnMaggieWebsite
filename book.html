@@ -3,14 +3,28 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="stylebook.css" />
-    <title>turning page test</title>
+    <link rel="stylesheet" href="style.css" />
+    <title>Selected books by John Maggie</title>
   </head>
   <body>
-    <nav>
-      <a href="index.html">home</a>
-      <p>books</p>
+    <nav class="homeNav">
+      <span class="hamburgerIcon"></span>
+      <div class="title">John Maggie</div>
+      <div class="icon">:)</div>
     </nav>
+    <aside class="sidebar">
+      <p class="closeSideBar">X</p>
+      <ul>
+        <li class="navOption"><a href="painting.html">painting</a></li>
+        <li class="navOption"><a href="book.html">books</a></li>
+        <li class="navOption">button play</li>
+        <li class="navOption">
+          <a href="work.html">Gabrysiak <br />collaboration</a>
+        </li>
+        <li class="navOption">shop</li>
+        <li class="navOption">dreams</li>
+      </ul>
+    </aside>
 
     <div class="columnOfBooks">
       <div class="book firstBook">
@@ -32,6 +46,6 @@
         <div class="bookBtns nextBtn thirdNextBtn">></div>
       </div>
     </div>
-    <script src="book.js"></script>
+    <script src="home.js"></script>
   </body>
 </html>

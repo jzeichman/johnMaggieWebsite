@@ -58,14 +58,20 @@ ul {
   list-style-type: none;
   padding-left: 0;
 }
+a {
+  text-decoration: none;
+}
 li {
+  text-decoration: none;
+  font-size: 20px;
   margin: 40px;
 }
 .sidebar {
+  filter: drop-shadow(1px 0px 3px #3d3d3d);
   position: absolute;
   top: 0;
   left: -250px;
-  background-color: rgb(184, 178, 185);
+  background-color: rgb(217, 205, 219);
   width: 250px;
   height: 100vh;
 }

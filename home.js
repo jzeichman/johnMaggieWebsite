@@ -99,20 +99,29 @@ secondNextBtn.addEventListener("click", function () {
   turnPage();
 });
 
-thirdNextBtn.addEventListener("click", function () {
-  function turnPage() {
-    let animateTurning = setInterval(function () {
-      deathCounter++;
-      reset++;
-      console.log(deathCounter);
-      thirdBook.style.backgroundImage = `url('bookWebIMG/death/IMG_${deathCounter}.jpg')`;
+// trying to condense javascript code by creating a function to run with all buttons
+let deathFolder = "death";
 
-      if (reset === 5) {
-        console.log("buns");
-        clearInterval(animateTurning);
-      }
-    }, 150);
-    reset = 0;
+thirdNextBtn.addEventListener("click", function () {
+  nextPage(deathCounter, thirdBook, deathFolder);
+  deathCounter += 5;
+  if (deathCounter > 1000) {
+    console.log("burps");
   }
-  turnPage();
 });
+
+function nextPage(bookCounter, book, folder) {
+  let animateTurning = setInterval(function () {
+    bookCounter++;
+    reset++;
+    console.log(bookCounter);
+    book.style.backgroundImage = `url('bookWebIMG/${folder}/IMG_${bookCounter}.jpg')`;
+
+    if (reset === 5) {
+      console.log("buns");
+      clearInterval(animateTurning);
+    }
+  }, 150);
+
+  reset = 0;
+}

@@ -45,29 +45,78 @@ let demonCounter = 1129;
 let pinchedCounter = 1059;
 let deathCounter = 988;
 
-firstPrevBtn.addEventListener("click", function () {
-  function turnPage() {
-    let animateTurning = setInterval(function () {
-      demonCounter--;
-      reset++;
-      console.log(demonCounter);
-      firstBook.style.backgroundImage = `url('bookWebIMG/demon/IMG_${demonCounter}.jpg')`;
-
-      if (reset === 5) {
-        console.log("buns");
-        clearInterval(animateTurning);
-      }
-    }, 150);
-    reset = 0;
-  }
-  turnPage();
-});
-
 const nextBtns = document.querySelectorAll(".nextBtn");
+
+const prevBtns = document.querySelectorAll(".prevBtn");
+console.log(prevBtns);
+
+prevBtns.forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    //this keyword works the same as e.currentTarget it seems...
+    if (this.classList.contains("firstPrevBtn")) {
+      function turnPage() {
+        let animateTurning = setInterval(function () {
+          demonCounter--;
+          reset++;
+          console.log(demonCounter);
+          firstBook.style.backgroundImage = `url('bookWebIMG/demon/IMG_${demonCounter}.jpg')`;
+
+          if (reset === 5) {
+            console.log("buns");
+            clearInterval(animateTurning);
+          }
+          if (demonCounter < 1129) {
+            demonCounter = 1203;
+          }
+        }, 150);
+        reset = 0;
+      }
+      turnPage();
+    } else if (this.classList.contains("secondPrevBtn")) {
+      function turnPage() {
+        let animateTurning = setInterval(function () {
+          pinchedCounter--;
+          reset++;
+          console.log(pinchedCounter);
+          secondBook.style.backgroundImage = `url('bookWebIMG/pinched/IMG_${pinchedCounter}.jpg')`;
+
+          if (reset === 5) {
+            console.log("buns");
+            clearInterval(animateTurning);
+          }
+          if (pinchedCounter < 1059) {
+            pinchedCounter = 1128;
+          }
+        }, 150);
+        reset = 0;
+      }
+      turnPage();
+    } else if (this.classList.contains("thirdPrevBtn")) {
+      function turnPage() {
+        let animateTurning = setInterval(function () {
+          deathCounter--;
+          reset++;
+          console.log(deathCounter);
+          thirdBook.style.backgroundImage = `url('bookWebIMG/death/IMG_${deathCounter}.jpg')`;
+
+          if (reset === 5) {
+            console.log("buns");
+            clearInterval(animateTurning);
+          }
+          if (deathCounter < 988) {
+            deathCounter = 1057;
+          }
+        }, 150);
+
+        reset = 0;
+      }
+      turnPage();
+    }
+  });
+});
 
 nextBtns.forEach(function (btn) {
   btn.addEventListener("click", function () {
-    //this keyword works the same as e.currentTarget it seems...
     if (this.classList.contains("firstNextBtn")) {
       function turnPage() {
         let animateTurning = setInterval(function () {

@@ -104,7 +104,9 @@ footer {
 }
 
 /* start book section */
-
+.bookTitle {
+  margin-top: 30px;
+}
 .columnOfBooks {
   display: flex;
   align-items: center;

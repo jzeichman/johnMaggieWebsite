@@ -45,24 +45,6 @@ let demonCounter = 1129;
 let pinchedCounter = 1059;
 let deathCounter = 988;
 
-firstNextBtn.addEventListener("click", function () {
-  function turnPage() {
-    let animateTurning = setInterval(function () {
-      demonCounter++;
-      reset++;
-      console.log(demonCounter);
-      firstBook.style.backgroundImage = `url('bookWebIMG/demon/IMG_${demonCounter}.jpg')`;
-
-      if (reset === 5) {
-        console.log("buns");
-        clearInterval(animateTurning);
-      }
-    }, 150);
-    reset = 0;
-  }
-  turnPage();
-});
-
 firstPrevBtn.addEventListener("click", function () {
   function turnPage() {
     let animateTurning = setInterval(function () {
@@ -81,47 +63,99 @@ firstPrevBtn.addEventListener("click", function () {
   turnPage();
 });
 
-secondNextBtn.addEventListener("click", function () {
-  function turnPage() {
-    let animateTurning = setInterval(function () {
-      pinchedCounter++;
-      reset++;
-      console.log(pinchedCounter);
-      secondBook.style.backgroundImage = `url('bookWebIMG/pinched/IMG_${pinchedCounter}.jpg')`;
+const nextBtns = document.querySelectorAll(".nextBtn");
 
-      if (reset === 5) {
-        console.log("buns");
-        clearInterval(animateTurning);
+nextBtns.forEach(function (btn) {
+  btn.addEventListener("click", function () {
+    //this keyword works the same as e.currentTarget it seems...
+    if (this.classList.contains("firstNextBtn")) {
+      function turnPage() {
+        let animateTurning = setInterval(function () {
+          demonCounter++;
+          reset++;
+          console.log(demonCounter);
+          firstBook.style.backgroundImage = `url('bookWebIMG/demon/IMG_${demonCounter}.jpg')`;
+
+          if (reset === 5) {
+            console.log("buns");
+            clearInterval(animateTurning);
+          }
+          if (demonCounter > 1203) {
+            demonCounter = 1129;
+          }
+        }, 150);
+        reset = 0;
       }
-    }, 150);
-    reset = 0;
-  }
-  turnPage();
-});
+      turnPage();
+    } else if (this.classList.contains("secondNextBtn")) {
+      function turnPage() {
+        let animateTurning = setInterval(function () {
+          pinchedCounter++;
+          reset++;
+          console.log(pinchedCounter);
+          secondBook.style.backgroundImage = `url('bookWebIMG/pinched/IMG_${pinchedCounter}.jpg')`;
 
-// trying to condense javascript code by creating a function to run with all buttons
-let deathFolder = "death";
+          if (reset === 5) {
+            console.log("buns");
+            clearInterval(animateTurning);
+          }
+          if (pinchedCounter > 1128) {
+            pinchedCounter = 1059;
+          }
+        }, 150);
+        reset = 0;
+      }
+      turnPage();
+    } else if (this.classList.contains("thirdNextBtn")) {
+      function turnPage() {
+        let animateTurning = setInterval(function () {
+          deathCounter++;
+          reset++;
+          console.log(deathCounter);
+          thirdBook.style.backgroundImage = `url('bookWebIMG/death/IMG_${deathCounter}.jpg')`;
 
-thirdNextBtn.addEventListener("click", function () {
-  nextPage(deathCounter, thirdBook, deathFolder);
-  deathCounter += 5;
-  if (deathCounter > 1000) {
-    console.log("burps");
-  }
-});
+          if (reset === 5) {
+            console.log("buns");
+            clearInterval(animateTurning);
+          }
+          if (deathCounter > 1057) {
+            deathCounter = 988;
+          }
+        }, 150);
 
-function nextPage(bookCounter, book, folder) {
-  let animateTurning = setInterval(function () {
-    bookCounter++;
-    reset++;
-    console.log(bookCounter);
-    book.style.backgroundImage = `url('bookWebIMG/${folder}/IMG_${bookCounter}.jpg')`;
-
-    if (reset === 5) {
-      console.log("buns");
-      clearInterval(animateTurning);
+        reset = 0;
+      }
+      turnPage();
     }
-  }, 150);
+  });
+});
 
-  reset = 0;
-}
+// nextBtns.addEventListener("click", function () {
+//   if (this.classList.contains(".thirdNextBtn")) {
+//     console.log("balls");
+//   }
+// });
+
+// marvis suggestions
+
+// 1. get the common class for all btns which is bbbutton
+// 2. bbbutton.addeventlistener(){
+//   3. if (class has nxt) {
+//     then do next click functio
+//     if (class has first - nxt) {
+//       then do first - next() click functio
+//       if (class has second - nxt) {
+//         then do second - next() click functio
+//       }
+//       4. if (class has prev) {
+//         then do prev click functio
+//         if (class has first - prev) {
+//           then do first - prev() click functio
+//           if (class has second - prev) {
+//             then do second - prev() click functio
+//           }
+//         }
+//Remember to grab all the classes from that particular div, using "this".
+//https://stackoverflow.com/questions/9279368/how-to-get-all-css-classes-of-an-element
+
+//check if class exist in all classes https://www.w3schools.com/jsref/jsref_includes_array.asp

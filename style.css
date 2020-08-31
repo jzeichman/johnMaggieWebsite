@@ -51,8 +51,10 @@ body {
 }
 .closeSideBar {
   font-weight: 600;
-  margin-left: 30px;
-  margin-top: 18px;
+  padding-left: 30px;
+  padding-top: 18px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid grey;
 }
 ul {
   list-style-type: none;
@@ -60,20 +62,26 @@ ul {
 }
 a {
   text-decoration: none;
+  color: inherit;
 }
 li {
   text-decoration: none;
   font-size: 20px;
-  margin: 40px;
+  padding: 15px;
 }
 .sidebar {
   filter: drop-shadow(1px 0px 3px #3d3d3d);
   position: absolute;
   top: 0;
   left: -250px;
-  background-color: rgb(217, 205, 219);
+  background-color: rgb(235, 207, 233);
+  border-right: 1px solid rgb(230, 206, 250);
   width: 250px;
   height: 100vh;
+}
+.navOption {
+  background-color: rgb(236, 200, 222);
+  border-bottom: 1px solid rgb(211, 179, 200);
 }
 
 /*   START GABRYSIAK WORK SECTION    */
@@ -85,6 +93,7 @@ li {
 .workWrapper {
   display: flex;
   justify-content: center;
+  text-align: center;
 }
 .workContainer {
   height: 100vh;
@@ -102,11 +111,19 @@ footer {
 .imageContainer {
   display: flex;
 }
+/* titles and Headings */
+
+.titleHeading {
+  margin-top: 20px;
+}
+.titleHeading b {
+  font-size: large;
+}
+.bookTitle {
+  margin-top: 20px;
+}
 
 /* start book section */
-.bookTitle {
-  margin-top: 30px;
-}
 .columnOfBooks {
   display: flex;
   align-items: center;
@@ -128,7 +145,7 @@ footer {
   height: 450px;
   display: flex;
   align-items: flex-end;
-  margin: 50px;
+  margin: 20px;
 }
 .bookBtns {
   cursor: pointer;

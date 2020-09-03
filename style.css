@@ -60,6 +60,9 @@ ul {
   list-style-type: none;
   padding-left: 0;
 }
+a .hover {
+  cursor: pointer;
+}
 a {
   text-decoration: none;
   color: inherit;
@@ -72,6 +75,7 @@ li {
 .sidebar {
   filter: drop-shadow(1px 0px 3px #3d3d3d);
   position: absolute;
+  z-index: 4;
   top: 0;
   left: -250px;
   background-color: rgb(235, 207, 233);
@@ -169,4 +173,72 @@ footer {
 }
 .thirdBook {
   background-image: url("bookWebIMG/death/IMG_988.jpg");
+}
+/* button styling */
+
+.button-page {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(247, 175, 175);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.controlPanel {
+  margin-top: 100px;
+  min-width: 300px;
+  border: solid 1px #433f77;
+}
+/* canvas */
+#canvasOne {
+  border: 1px solid red;
+  position: absolute;
+  background-color: rgba(0, 0, 255, 0);
+  z-index: 2;
+}
+/* bplay image */
+.bPlay-pic {
+  background-image: url("bplayWeb.jpg");
+  background-size: contain, cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 215px;
+}
+.button-wrapper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: rgb(255, 229, 144);
+  justify-content: space-around;
+  z-index: 2;
+  outline-color: rgb(245, 29, 29);
+}
+.second-button-wrapper {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: 80px;
+  background-color: rgb(255, 213, 77);
+  justify-content: space-evenly;
+  z-index: 2;
+  margin: 45px;
+  border: 1px solid purple;
+}
+.bButton {
+  background-color: rgb(158, 186, 247);
+  border: 10px solid #dd4d95;
+  border-radius: 20px;
+  display: inline-block;
+  margin: 2px 2px;
+  padding: 5px;
+  position: relative;
+  left: 30px;
+  filter: drop-shadow(1px 5px 1px #3d3d3d);
+  outline: none;
+}
+.bButton:focus {
+  transform: translateY(2px);
+  filter: drop-shadow(1px 2px 0px #3d3d3d);
 }

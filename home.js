@@ -179,32 +179,66 @@ nextBtns.forEach(function (btn) {
   });
 });
 
-// nextBtns.addEventListener("click", function () {
-//   if (this.classList.contains(".thirdNextBtn")) {
-//     console.log("balls");
+// Begin button page
+
+// let canvas = document.getElementById("canvasOne");
+// canvas.width = "300";
+// canvas.height = "215";
+// let c = canvas.getContext("2d");
+// let x = 190;
+// let radius = 5;
+// let y = 102;
+// let dx = 4;
+// let randoArray = [0, 1, 2, 3, 4, -1, -2, -3, -4, -5];
+// let rando = Math.floor(Math.random() * 10);
+// let spray = Math.random() * randoArray[rando];
+// function animate() {
+//   requestAnimationFrame(animate);
+//   c.clearRect(0, 0, innerWidth, innerHeight);
+//   c.beginPath();
+//   c.arc(x, y, radius, 0, 2 * Math.PI);
+//   c.strokeStyle = "orange";
+//   c.fillStyle = "black";
+//   c.fill();
+//   c.stroke();
+//   y += spray;
+//   x += dx;
+//   if (x > 300 || x < 0) {
+//     dx = -dx;
 //   }
-// });
+//   if (y > 215 || y < 20) {
+//     spray = -spray;
+//   }
+// }
 
-// marvis suggestions
+//testing html canvas
+let smallBMbtn = document.querySelector(".button1");
+let smallLaunchbtn = document.querySelector(".button2");
 
-// 1. get the common class for all btns which is bbbutton
-// 2. bbbutton.addeventlistener(){
-//   3. if (class has nxt) {
-//     then do next click functio
-//     if (class has first - nxt) {
-//       then do first - next() click functio
-//       if (class has second - nxt) {
-//         then do second - next() click functio
-//       }
-//       4. if (class has prev) {
-//         then do prev click functio
-//         if (class has first - prev) {
-//           then do first - prev() click functio
-//           if (class has second - prev) {
-//             then do second - prev() click functio
-//           }
-//         }
-//Remember to grab all the classes from that particular div, using "this".
-//https://stackoverflow.com/questions/9279368/how-to-get-all-css-classes-of-an-element
+let canvas = document.getElementById("canvasOne");
+let ctx = canvas.getContext("2d");
+canvas.height = "215";
+canvas.width = "300";
 
-//check if class exist in all classes https://www.w3schools.com/jsref/jsref_includes_array.asp
+function loadSmallBM() {
+  ctx.beginPath();
+  ctx.arc(204, 100, 6, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.fill();
+}
+smallBMbtn.addEventListener("click", loadSmallBM);
+let x = 204;
+let y = 100;
+function launchSmallBM() {
+  requestAnimationFrame(launchSmallBM);
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+  ctx.beginPath();
+  ctx.arc(x, y, 6, 0, Math.PI * 2);
+  ctx.stroke();
+  ctx.fill();
+  x += 1;
+  y += 1;
+}
+//launchSmallBM();
+
+smallLaunchbtn.addEventListener("click", launchSmallBM);

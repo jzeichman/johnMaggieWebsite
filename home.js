@@ -181,64 +181,65 @@ nextBtns.forEach(function (btn) {
 
 // Begin button page
 
-// let canvas = document.getElementById("canvasOne");
-// canvas.width = "300";
-// canvas.height = "215";
-// let c = canvas.getContext("2d");
-// let x = 190;
-// let radius = 5;
-// let y = 102;
-// let dx = 4;
-// let randoArray = [0, 1, 2, 3, 4, -1, -2, -3, -4, -5];
-// let rando = Math.floor(Math.random() * 10);
-// let spray = Math.random() * randoArray[rando];
-// function animate() {
-//   requestAnimationFrame(animate);
-//   c.clearRect(0, 0, innerWidth, innerHeight);
-//   c.beginPath();
-//   c.arc(x, y, radius, 0, 2 * Math.PI);
-//   c.strokeStyle = "orange";
-//   c.fillStyle = "black";
-//   c.fill();
-//   c.stroke();
-//   y += spray;
-//   x += dx;
-//   if (x > 300 || x < 0) {
-//     dx = -dx;
-//   }
-//   if (y > 215 || y < 20) {
-//     spray = -spray;
-//   }
-// }
-
-//testing html canvas
-let smallBMbtn = document.querySelector(".button1");
-let smallLaunchbtn = document.querySelector(".button2");
-
 let canvas = document.getElementById("canvasOne");
 let ctx = canvas.getContext("2d");
 canvas.height = "215";
 canvas.width = "300";
 
-function loadSmallBM() {
-  ctx.beginPath();
-  ctx.arc(204, 100, 6, 0, Math.PI * 2);
-  ctx.stroke();
-  ctx.fill();
-}
-smallBMbtn.addEventListener("click", loadSmallBM);
-let x = 204;
-let y = 100;
-function launchSmallBM() {
-  requestAnimationFrame(launchSmallBM);
-  ctx.clearRect(0, 0, innerWidth, innerHeight);
-  ctx.beginPath();
-  ctx.arc(x, y, 6, 0, Math.PI * 2);
-  ctx.stroke();
-  ctx.fill();
-  x += 1;
-  y += 1;
-}
-//launchSmallBM();
+let ballArr = [];
 
-smallLaunchbtn.addEventListener("click", launchSmallBM);
+const Ball = function (x, y, radius, dx, spray, color) {
+  this.x = x;
+  this.y = y;
+  this.radius = radius;
+  this.dx = dx;
+  this.spray = spray;
+  this.color = color;
+};
+
+
+function animate() {
+  requestAnimationFrame(animate);
+  ctx.clearRect(0, 0, innerWidth, innerHeight);
+
+  ballArr.forEach(function (ball) {
+    ctx.beginPath();
+
+    ctx.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI);
+    ctx.strokeStyle = "orange";
+    ctx.fillStyle = ball.color;
+    ctx.fill();
+    ctx.stroke();
+
+    ball.y += ball.spray;
+    ball.x += ball.dx;
+
+    if (ball.x > 300 || ball.x < 0) {
+      ball.dx = -ball.dx;
+    }
+    if (ball.y > 300 || ball.y < 20) {
+      ball.spray = -ball.spray;
+    }
+    ctx.closePath();
+  });
+}
+
+let randoArray = [0, 1, 2, 3, 4, -1, -2, -3, -4, -5];
+let rando = Math.floor(Math.random() * 10);
+let spray = Math.random() * randoArray[rando];
+
+let smallLaunchbtn = document.querySelector(".button2");
+smallLaunchbtn.addEventListener("click", function () {
+  let randoArray = [0, 1, 2, 3, 4, -1, -2, -3, -4];
+  let rando = Math.floor(Math.random() * 10);
+  let spray = Math.random() * randoArray[rando];
+
+  let color = ["#992104", "#aa7d02", "#1f0e00"];
+
+  ballArr.push(
+    new Ball(208, 125, 10, 2, spray, color[Math.floor(Math.random() * 4)])
+  );
+  console.log(Math.floor(Math.random() * 3));
+  console.log(color[Math.floor(Math.random() * 3)]);
+});
+animate();

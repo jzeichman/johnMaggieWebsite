@@ -183,8 +183,8 @@ nextBtns.forEach(function (btn) {
 
 let canvas = document.getElementById("canvasOne");
 let ctx = canvas.getContext("2d");
-canvas.height = "215";
-canvas.width = "300";
+canvas.height = "213";
+canvas.width = "298";
 
 let ballArr = [];
 
@@ -214,32 +214,45 @@ function animate() {
     ball.y += ball.spray;
     ball.x += ball.dx;
 
-    if (ball.x > 300 || ball.x < 0) {
+    if (ball.x > 298 || ball.x < 0) {
       ball.dx = -ball.dx;
     }
-    if (ball.y > 300 || ball.y < 20) {
+    if (ball.y > 213 || ball.y < 0) {
       ball.spray = -ball.spray;
     }
     ctx.closePath();
   });
 }
 
-let randoArray = [0, 1, 2, 3, 4, -1, -2, -3, -4, -5];
-let rando = Math.floor(Math.random() * 10);
-let spray = Math.random() * randoArray[rando];
-
 let smallLaunchbtn = document.querySelector(".button2");
 smallLaunchbtn.addEventListener("click", function () {
-  let randoArray = [0, 1, 2, 3, 4, -1, -2, -3, -4];
-  let rando = Math.floor(Math.random() * 10);
-  let spray = Math.random() * randoArray[rando];
-
+  
   let color = ["#992104", "#aa7d02", "#1f0e00"];
 
   ballArr.push(
-    new Ball(208, 125, 10, 2, spray, color[Math.floor(Math.random() * 4)])
+    new Ball(210, 127, 10, 0, 0, color[Math.floor(Math.random() * 4)])
   );
   console.log(Math.floor(Math.random() * 3));
   console.log(color[Math.floor(Math.random() * 3)]);
 });
 animate();
+
+
+//launch button moves x and y of balls in the ball array
+let poopCounter= 0;
+let button = document.querySelector('.button1')
+button.addEventListener('click', function(){
+  
+  console.log(ballArr);
+  let randoArray = [0, 1, 2, 3, 4, -1, -2, -3, -4];
+  let rando = Math.floor(Math.random() * 10);
+  let spray = Math.random() * randoArray[rando];
+  
+  ballArr[poopCounter].spray = Math.random() * randoArray[rando];
+  ballArr[poopCounter].dx = 2;
+  poopCounter++;
+  console.log(poopCounter);
+
+})
+
+

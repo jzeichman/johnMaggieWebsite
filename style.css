@@ -199,6 +199,7 @@ footer {
 /* bplay image */
 .bPlay-pic {
   background-image: url("bplayWeb.jpg");
+
   background-size: contain, cover;
   background-position: center;
   background-repeat: no-repeat;

@@ -48,7 +48,7 @@ let deathCounter = 988;
 const nextBtns = document.querySelectorAll(".nextBtn");
 
 const prevBtns = document.querySelectorAll(".prevBtn");
-console.log(prevBtns);
+
 
 prevBtns.forEach(function (btn) {
   btn.addEventListener("click", function () {
@@ -186,6 +186,8 @@ let ctx = canvas.getContext("2d");
 canvas.height = "213";
 canvas.width = "298";
 
+
+
 let ballArr = [];
 
 const Ball = function (x, y, radius, dx, spray, color) {
@@ -195,25 +197,37 @@ const Ball = function (x, y, radius, dx, spray, color) {
   this.dx = dx;
   this.spray = spray;
   this.color = color;
+  this.strokeStyle = strobe.value; 
 };
 
+//creating an object "strobe" in order to change it with setInterval, changing the strokeStyle of balls
+
+let strobe = {value: "green"};
+
+function changeColor(){
+  let colorArray = ["red", "orange", "blue", "purple", "pink"]
+       strobe.value = colorArray[Math.floor(Math.random() * colorArray.length)];
+       console.log(strobe.value)
+     }
 
 function animate() {
   requestAnimationFrame(animate);
   ctx.clearRect(0, 0, innerWidth, innerHeight);
 
   ballArr.forEach(function (ball) {
+
     ctx.beginPath();
 
     ctx.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI);
-    ctx.strokeStyle = "orange";
+    ctx.strokeStyle = strobe.value;
+  
     ctx.fillStyle = ball.color;
     ctx.fill();
     ctx.stroke();
 
     ball.y += ball.spray;
     ball.x += ball.dx;
-
+    
     if (ball.x > 298 || ball.x < 0) {
       ball.dx = -ball.dx;
     }
@@ -224,24 +238,27 @@ function animate() {
   });
 }
 
-let smallLaunchbtn = document.querySelector(".button2");
-smallLaunchbtn.addEventListener("click", function () {
+let stageBallbtn = document.querySelector(".button3");
+stageBallbtn.addEventListener("click", function () {
+  setInterval(changeColor, 50);
+  let color = ["#dfa7a7", "#dfc0a7", "#adb5be"];
   
-  let color = ["#992104", "#aa7d02", "#1f0e00"];
+
+
+
 
   ballArr.push(
     new Ball(210, 127, 10, 0, 0, color[Math.floor(Math.random() * 4)])
   );
-  console.log(Math.floor(Math.random() * 3));
-  console.log(color[Math.floor(Math.random() * 3)]);
+  
 });
 animate();
 
 
 //launch button moves x and y of balls in the ball array
 let poopCounter= 0;
-let button = document.querySelector('.button1')
-button.addEventListener('click', function(){
+let launchBallBtn = document.querySelector('.button4')
+launchBallBtn.addEventListener('click', function(){
   
   console.log(ballArr);
   let randoArray = [0, 1, 2, 3, 4, -1, -2, -3, -4];
@@ -251,8 +268,13 @@ button.addEventListener('click', function(){
   ballArr[poopCounter].spray = Math.random() * randoArray[rando];
   ballArr[poopCounter].dx = 2;
   poopCounter++;
-  console.log(poopCounter);
 
 })
+
+
+
+let colorArray = ["red", "blue", "green", "yellow", "orange", "pink", "purple"]
+
+ 
 
 

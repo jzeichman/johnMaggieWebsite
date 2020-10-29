@@ -207,8 +207,9 @@ let strobe = {value: "green"};
 function changeColor(){
   let colorArray = ["red", "orange", "blue", "purple", "pink"]
        strobe.value = colorArray[Math.floor(Math.random() * colorArray.length)];
-       console.log(strobe.value)
+      //  console.log(strobe.value)
      }
+     // need to stop this loop for changing color array!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 function animate() {
   requestAnimationFrame(animate);
@@ -238,29 +239,30 @@ function animate() {
   });
 }
 
-let stageBallbtn = document.querySelector(".button3");
-stageBallbtn.addEventListener("click", function () {
-  setInterval(changeColor, 50);
-  let color = ["#dfa7a7", "#dfc0a7", "#adb5be"];
+
+// addEventListener("click", function () {
   
 
 
 
 
-  ballArr.push(
-    new Ball(210, 127, 10, 0, 0, color[Math.floor(Math.random() * 4)])
-  );
-  
-});
+
 animate();
 
 
 //launch button moves x and y of balls in the ball array
 let poopCounter= 0;
-let launchBallBtn = document.querySelector('.button4')
+let launchBallBtn = document.querySelector('.button1')
 launchBallBtn.addEventListener('click', function(){
+
+setInterval(changeColor, 50);
+  let color = ["#dfa7a7", "#dfc0a7", "#adb5be"];
   
-  console.log(ballArr);
+   ballArr.push(
+    new Ball(210, 127, 10, 0, 0, color[Math.floor(Math.random() * 4)])
+  );
+  
+
   let randoArray = [0, 1, 2, 3, 4, -1, -2, -3, -4];
   let rando = Math.floor(Math.random() * 10);
   let spray = Math.random() * randoArray[rando];
@@ -273,8 +275,34 @@ launchBallBtn.addEventListener('click', function(){
 
 
 
-let colorArray = ["red", "blue", "green", "yellow", "orange", "pink", "purple"]
 
- 
+ let btnTwo = document.querySelector(".button2");
+
+ btnTwo.addEventListener("click", function(){
+ ballArr.forEach(function (ball) {
+    
+  function gravityPull(){
+     if (ball.y > 209){
+      ball.y = 213;
+      ball.spray = 0;
+      console.log(ball.y)
+    }
+  }
+    ball.dx = 0;
+    let gravity = setInterval(gravityPull, 50);
+    //timer
+
+    setTimeout(function(){
+      clearInterval(gravity);}, 8000);
+    }
+  
+   
+ );
+ });
+
+
+
+
+
 
 

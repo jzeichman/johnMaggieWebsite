@@ -182,6 +182,7 @@ nextBtns.forEach(function (btn) {
 // Begin button page
 
 let canvas = document.getElementById("canvasOne");
+console.log(canvas)
 let ctx = canvas.getContext("2d");
 canvas.height = "213";
 canvas.width = "298";
@@ -238,9 +239,6 @@ function animate() {
     ctx.closePath();
   });
 }
-
-
-// addEventListener("click", function () {
   
 
 
@@ -253,24 +251,24 @@ animate();
 //launch button moves x and y of balls in the ball array
 let poopCounter= 0;
 let launchBallBtn = document.querySelector('.button1')
-launchBallBtn.addEventListener('click', function(){
 
-setInterval(changeColor, 50);
-  let color = ["#dfa7a7", "#dfc0a7", "#adb5be"];
-  
-   ballArr.push(
-    new Ball(210, 127, 10, 0, 0, color[Math.floor(Math.random() * 4)])
+launchBallBtn.addEventListener('click', function(){
+   setInterval(changeColor, 50);
+   let color = ["#dfa7a7", "#dfc0a7", "#adb5be"];
+    ballArr.push(
+    new Ball(210, 127, 10, 0, 0, color[Math.floor(Math.random() * 3)])
   );
   
 
   let randoArray = [0, 1, 2, 3, 4, -1, -2, -3, -4];
-  let rando = Math.floor(Math.random() * 10);
+  let rando = Math.floor(Math.random() * 8+(1));
   let spray = Math.random() * randoArray[rando];
-  
   ballArr[poopCounter].spray = Math.random() * randoArray[rando];
   ballArr[poopCounter].dx = 2;
   poopCounter++;
-
+console.log(ballArr)
+console.log(spray)
+console.log(rando)
 })
 
 
@@ -282,6 +280,7 @@ setInterval(changeColor, 50);
  ballArr.forEach(function (ball) {
     
   function gravityPull(){
+    ball.spray += 1;
      if (ball.y > 209){
       ball.y = 213;
       ball.spray = 0;
@@ -289,7 +288,7 @@ setInterval(changeColor, 50);
     }
   }
     ball.dx = 0;
-    let gravity = setInterval(gravityPull, 50);
+    let gravity = setInterval(gravityPull, 30);
     //timer
 
     setTimeout(function(){
